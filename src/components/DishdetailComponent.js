@@ -22,9 +22,9 @@ class DishDetail extends Component {
     }
 
     renderComments(dish) {
-        const options = {year: 'numeric', month: 'long', day: 'numeric'};
+        const options = {year: 'numeric', month: 'short', day: 'numeric'};
         if(dish != null) {
-            const comments = this.props.selectedDish.comments.map((comment) => {
+            const comments = dish.comments.map((comment) => {
                 return (
                     <div key={comment.id}>
                         <ul className="list-unstyled">
@@ -54,14 +54,16 @@ class DishDetail extends Component {
 
     render() {
         return (
-        <div className="row">
-            <div className="col-sm-12 col-md-5 m-1">
-                {this.renderDish(this.props.selectedDish)}
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-12 col-md-5 m-1">
+                        {this.renderDish(this.props.dish)}
+                    </div>
+                    <div className="col-sm-12 col-md-5 m-1">
+                        {this.renderComments(this.props.dish)}
+                    </div>
+                </div>
             </div>
-            <div className="col-sm-12 col-md-5 m-1">
-                {this.renderComments(this.props.selectedDish)}
-            </div>
-        </div>
         );
     }
 
